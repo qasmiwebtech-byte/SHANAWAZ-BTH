@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamia Ummul Qura Lilbanat - جامعۃ أم القری للبنات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ==== عمومی اسٹائل ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Noto Nastaliq Urdu", "Arial", sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-section {
+            display: none;
+            padding: 40px 0;
+            min-height: 500px;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        /* ==== ہیڈر اسٹائل ==== */
+        .ummlqura-header {
+            background-color: #111;
+            color: #fff;
+            border-bottom: 3px solid #f1c40f;
+            box-shadow: 0 0 20px #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ✨ ٹاپ بار */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1b1b1b;
+            border-bottom: 1px solid #f1c40f;
+            padding: 8px 25px;
+            font-size: 15px;
+        }
+        .language-box select {
+            background: #111;
+            color: #f1c40f;
+            border: 1px solid #f1c40f;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #current-date, #current-time {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* 🌙 بسم اللہ */
+        .bismillah-top {
+            text-align: center;
+            color: #f1c40f;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* 🌿 ہیڈر کا مرکزی حصہ */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 15px 30px;
+            max-width: 1300px;
+            margin: auto;
+        }
+        .header-logo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #f1c40f;
+            box-shadow: 0 0 15px #f1c40f66;
+            object-fit: cover;
+        }
+        .center-contact {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #f1c40f;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+        .center-contact i {
+            color: #f1c40f;
+            margin-right: 5px;
+        }
+        .header-info {
+            flex: 1;
+            line-height: 1.6;
+        }
+        .header-info h2 {
+            color: #f1c40f;
+            margin-bottom: 5px;
+            font-size: 17px;
+            white-space: nowrap;
+        }
+        .header-info.left { text-align: left; }
+        .header-info.right { text-align: right; direction: rtl; }
+
+        /* 🌟 مینیو بار */
+        .menu-bar {
+            background-color: #141414;
+            border-top: 1px solid #f1c40f33;
+            text-align: center;
+            padding: 12px 0;
+            position: relative;
+        }
+        .menu-bar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .menu-bar ul li {
+            background: #1b1b1b;
+            border: 1px solid #f1c40f;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .menu-bar ul li a {
+            display: block;
+            color: #fff;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .menu-bar ul li:hover {
+            background: #f1c40f;
+        }
+        .menu-bar ul li:hover a {
+            color: #000;
+        }
+
+        /* 🌈 گولڈن گلو لائن */
+        .menu-glow-line {
+            position: absolute;
+            bottom: 0;
+            left: -150px;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f1c40f, transparent);
+            animation: moveLight 3s linear infinite;
+        }
+        @keyframes moveLight {
+            0% { left: -150px; opacity: 0.7; }
+            50% { left: 100%; opacity: 1; }
+            100% { left: 120%; opacity: 0.7; }
+        }
+
+        /* ==== مرکزی مواد ==== */
+        .main-content {
+            background-color: #fff;
+        }
+        
+        /* ہوم پیج اسٹائل */
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #fef9e7, #fdebd0);
+            border-radius: 15px;
+        }
+        
+        .welcome-section h1 {
+            color: #8B0000;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .welcome-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-box {
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid #f1c40f;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-box i {
+            font-size: 3rem;
+            color: #f1c40f;
+            margin-bottom: 15px;
+        }
+        
+        .feature-box h3 {
+            color: #111;
+            margin-bottom: 15px;
+        }
+        
+        .bank-details {
+            background: #f8f9fa;
+            border: 2px solid #f1c40f;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .bank-details h3 {
+            color: #8B0000;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .appeal-section {
+            background: linear-gradient(135deg, #e8f4f8, #d1ecf1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border-right: 5px solid #8B0000;
+        }
+        
+        .appeal-section h2 {
+            color: #8B0000;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        /* اکیڈمک پیج اسٹائل */
+        .academic-container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 3px solid #8B4513;
+            margin: 0 auto;
+        }
+        
+        .academic-header {
+            background: linear-gradient(135deg, #8B0000, #B22222, #CD5C5C);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .academic-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23000' fill-opacity='0.1' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            opacity: 0.2;
+        }
+        
+        .academic-header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .academic-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            color: #FFD700;
+        }
+        
+        .academic-header p {
+            font-size: 22px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .academic-content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            color: #8B0000;
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #8B4513;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .section-title i {
+            margin-right: 15px;
+            font-size: 30px;
+            color: #8B0000;
+        }
+        
+        .education-list, .facilities-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .education-list li, .facilities-list li {
+            padding: 15px 0;
+            border-bottom: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .education-list li:hover, .facilities-list li:hover {
+            background-color: #f8f9fa;
+            padding-left: 15px;
+            border-radius: 8px;
+        }
+        
+        .education-list li:last-child, .facilities-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .education-list li i, .facilities-list li i {
+            margin-right: 15px;
+            color: #8B0000;
+            font-size: 26px;
+            width: 40px;
+            text-align: center;
+        }
+        
+        .dates {
+            background: linear-gradient(135deg, #f5e8d0, #e8d5b7);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border-left: 6px solid #8B0000;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        
+        .dates p {
+            margin: 10px 0;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .dates p i {
+            margin-right: 12px;
+            color: #8B0000;
+            font-size: 24px;
+        }
+        
+        .contact {
+            background: linear-gradient(135deg, #8B4513, #A0522D, #CD853F);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        
+        .contact h3 {
+            color: #FFD700;
+            margin-bottom: 18px;
+            font-size: 28px;
+        }
+        
+        .contact p {
+            font-size: 22px;
+            margin: 10px 0;
+        }
+        
+        .phone {
+            font-size: 30px !important;
+            font-weight: bold;
+            color: #FFD700;
+            direction: ltr;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .phone:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #FFD700, #FFEC8B);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #8B0000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .note {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #8B0000;
+            font-size: 22px;
+        }
+        
+        .decoration {
+            text-align: center;
+            margin: 25px 0;
+            font-size: 36px;
+            color: #8B0000;
+            opacity: 0.7;
+        }
+        
+        /* ہیلپ پیج اسٹائل */
+        .help-section {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f0f8ff, #e6f3ff);
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .help-section h2 {
+            color: #8B0000;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .help-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .help-option {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #f1c40f;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .help-option:hover {
+            transform: translateY(-5px);
+        }
+        
+        .help-option h3 {
+            color: #8B0000;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .help-option p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* گیلری پیج اسٹائل */
+        .gallery-section {
+            padding: 40px 0;
+        }
+        
+        .gallery-section h2 {
+            text-align: center;
+            color: #8B0000;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border: 5px solid #f1c40f;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* رابطہ پیج اسٹائل */
+        .contact-section {
+            padding: 40px 0;
+        }
+        
+        .contact-section h2 {
+            text-align: center;
+            color: #8B0000;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #f1c40f;
+            text-align: center;
+        }
+        
+        .contact-card h3 {
+            color: #8B0000;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .contact-card p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-card i {
+            margin-right: 10px;
+            color: #f1c40f;
+            font-size: 1.2rem;
+        }
+        
+        .map-container {
+            margin-top: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* ==== فوٹر اسٹائل ==== */
+        .juqlb-footer {
+            background: #111;
+            color: #fff;
+            padding: 40px 20px;
+            font-family: 'Arial', sans-serif;
+            border-top: 3px solid #f1c40f;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ==== ریسپانسیو گرڈ لیآؤٹ ==== */
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        .footer-box {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid #f1c40f;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px #f1c40f44;
+            transition: all 0.3s ease;
+        }
+        .footer-box:hover {
+            box-shadow: 0 0 20px #f1c40f;
+        }
+        .footer-box h3 {
+            color: #f1c40f;
+            border-bottom: 1px solid #f1c40f33;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 18px;
+            white-space: nowrap;
+        }
+        .footer-box p, .footer-box a {
+            color: #ddd;
+            font-size: 14px;
+            line-height: 1.6;
+            text-decoration: none;
+        }
+        .footer-box a:hover {
+            color: #f1c40f;
+        }
+        .footer-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-box ul li {
+            margin: 6px 0;
+        }
+
+        /* ==== سوشل آئیکن ==== */
+        .social-icons a {
+            display: inline-block;
+            color: #f1c40f;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        .social-icons a i {
+            margin-right: 8px;
+        }
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        /* ==== فوٹر کا نچلا حصہ ==== */
+        .juqlb-footer hr {
+            border-color: #333;
+            margin: 30px 0;
+        }
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer-bottom a {
+            color: #f1c40f;
+            text-decoration: none;
+        }
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        /* ==== فلوٹنگ بٹن ==== */
+        .float-btn {
+            position: fixed;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 22px;
+            z-index: 999;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #000;
+            border: 2px solid #f1c40f;
+        }
+        .call-btn {
+            bottom: 90px;
+            background: #f1c40f;
+            color: #000;
+        }
+        .call-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+        .whatsapp-btn {
+            bottom: 25px;
+            background: #25D366;
+        }
+        .whatsapp-btn:hover {
+            background: #1ebe5c;
+        }
+
+        /* ==== کلک بلاک کو فکس کریں ==== */
+        .footer-box a {
+            pointer-events: auto;
+            position: relative;
+            display: inline-block;
+        }
+        .quick-links a {
+            display: block;
+            padding: 4px 0;
+            cursor: pointer;
+        }
+
+        /* ==== موبائل ویو ==== */
+        @media (max-width: 900px) {
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .header-info.left, .header-info.right {
+                text-align: center;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-box {
+                text-align: center;
+            }
+            .social-icons a {
+                display: block;
+            }
+            
+            .features, .help-options, .contact-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .academic-header h1 {
+                font-size: 32px;
+            }
+            
+            .academic-header p {
+                font-size: 18px;
+            }
+            
+            .academic-content {
+                padding: 25px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .education-list li, .facilities-list li {
+                font-size: 18px;
+            }
+            
+            .phone {
+                font-size: 24px !important;
+            }
+            
+            .note {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .academic-header h1 {
+                font-size: 28px;
+            }
+            
+            .academic-header p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .education-list li, .facilities-list li {
+                font-size: 16px;
+            }
+            
+            .phone {
+                font-size: 20px !important;
+            }
+        }
+        
+        /* زبان کے مطابق سمت */
+        body[dir="rtl"] .section-title,
+        body[dir="rtl"] .education-list li,
+        body[dir="rtl"] .facilities-list li,
+        body[dir="rtl"] .dates p {
+            justify-content: flex-end;
+        }
+        
+        body[dir="rtl"] .section-title i {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+        
+        body[dir="rtl"] .education-list li i,
+        body[dir="rtl"] .facilities-list li i,
+        body[dir="rtl"] .dates p i {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+        
+        body[dir="rtl"] .dates {
+            border-left: none;
+            border-right: 6px solid #8B0000;
+        }
+        
+        body[dir="rtl"] .welcome-section p {
+            text-align: right;
+        }
+    </style>
+</head>
+<body dir="ltr">
+    <!-- ====== ہیڈر ====== -->
+    <header class="ummlqura-header">
+        <!-- ✨ ٹاپ بار -->
+        <div class="top-bar">
+            <div class="language-box">
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="ur">اردو</option>
+                    <option value="ar">العربية</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div>
+            <div id="current-date"></div>
+            <div id="current-time"></div>
+        </div>
+
+        <!-- 🕌 بسم اللہ -->
+        <div class="bismillah-top" data-translate="bismillah">بِسْمِ اللّٰہِ الرَّحْمٰنِ الرَّحِیْمِ</div>
+
+        <!-- 🕌 مرکزی ہیڈر -->
+        <div class="header-container">
+            <!-- بائیں (انگریزی معلومات) -->
+            <div class="header-info left">
+                <h2 data-translate="institute_name_en">JAMIA UMMUL QURA LILBANAT BETTIAH</h2>
+                <p data-translate="address_en">Lalu Nagar, Near PS Bettiah, Dist. West Champaran, Bihar – 855453<br>
+                <span style="color:#f1c40f;" data-translate="trust_en">(Managed by Al-Karim Educational and Welfare Trust)</span></p>
+            </div>
+
+            <!-- مرکز میں لوگو کے ساتھ رابطے کی معلومات -->
+            <div class="header-logo">
+                <img src="http://juqlb.in/wp-content/uploads/2025/10/IMG-20251021-WA0021.jpg" alt="JUQLB Logo">
+                <p class="center-contact">
+                    <i class="fa-solid fa-phone"></i> <span data-translate="phone">8439786247 | 8881879342</span><br>
+                    <i class="fa-solid fa-envelope"></i> <span data-translate="email">abullaisanwar1966@gmail.com</span>
+                </p>
+            </div>
+
+            <!-- دائیں (اردو معلومات) -->
+            <div class="header-info right">
+                <h2 data-translate="institute_name_ur">جامعۃ أم القری للبنات</h2>
+                <p data-translate="address_ur">لالو نگر متصل تھانہ بتیا<br>
+                ضلع مغربی چمپارن، بہار<br>
+                <span data-translate="trust_ur">زیرِ انتظام: الکریم ایجوکیشنل اینڈ ویلفیئر ٹرسٹ</span></p>
+            </div>
+        </div>
+
+        <!-- 🌟 مینیو بار -->
+        <nav class="menu-bar">
+            <ul>
+                <li><a class="nav-link" data-page="home" data-translate="menu_home">Home</a></li>
+                <li><a class="nav-link" data-page="academic" data-translate="menu_admission">Admission</a></li>
+                <li><a class="nav-link" data-page="help" data-translate="menu_help">Help</a></li>
+                <li><a class="nav-link" data-page="gallery" data-translate="menu_gallery">Gallery</a></li>
+                <li><a class="nav-link" data-page="contact" data-translate="menu_contact">Contact</a></li>
+            </ul>
+            <div class="menu-glow-line"></div>
+        </nav>
+    </header>
+
+    <!-- ====== مرکزی مواد ====== -->
+    <main class="main-content">
+        <!-- ہوم پیج -->
+        <section id="home" class="page-section active">
+            <div class="container">
+                <div class="welcome-section">
+                    <h1 data-translate="home_title">جامعة ام القرى للبنات</h1>
+                    <h2 data-translate="home_subtitle">لالونگر متصل تھانہ بتیا ضلع مغربی چمپارن بہار</h2>
+                    <h3 data-translate="home_trust">زیر انتظام : الکریم ایجوکیشنل اینڈ ویلفیئر ٹرسٹ</h3>
+                    
+                    <p data-translate="home_content_1">علم انسانی زندگی کا سب سے قیمتی اثاثہ ہے۔ قرآن مجید کی سب سے پہلی وحی جو ہمارے نبی کریم ﷺ پر نازل ہوئی، اس کا آغاز لفظ “اقرأ” سے ہوتا ہے، جس کا مطلب ہے “پڑھو”۔ یہ بات علم حاصل کرنے کی اہمیت کو واضح کرتی ہے، اور یہی وجہ ہے کہ مسلمانوں نے ہمیشہ تعلیم پر خصوصی توجہ دی ہے، خواہ وہ مرد ہوں یا عورتیں۔ انہوں نے مدارس اور علمی ادارے قائم کیے، کتابیں لکھیں، بڑے بڑے علماء پیدا کیے، اور ایک شاندار علمی تاریخ رقم کی جس کی مثال دنیا میں نہیں ملتی۔</p>
+                    
+                    <p data-translate="home_content_2">آج کے دور میں ہر قوم اپنے نوجوانوں کو تعلیم دلوانے پر خصوصی توجہ دے رہی ہے۔ وہ قومیں جو ماضی میں تعلیمی لحاظ سے بہت پیچھے تھیں، آج کے دور میں وہ بھی تعلیم حاصل کر کے اپنے سماجی اور مالی حالات کو بہتر بنا رہی ہیں۔ لیکن حیرت کی بات یہ ہے کہ مسلمان، جنہیں قرآن نے سب سے زیادہ تعلیم حاصل کرنے کی ترغیب دی، آج تعلیمی میدان میں پیچھے رہ گئے ہیں۔</p>
+                    
+                    <p data-translate="home_content_3">انہی مقاصد کو پورا کرنےکے لئے جامعہ کا قیام عمل میں آیا۔</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-box">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3 data-translate="feature_education_title">معیار تعلیم</h3>
+                        <p data-translate="feature_education_desc">شعبہ حفظ و قرآت و پانچ سالہ عالمیت و فضیلت کا کورس ، نیز خواہش مند طالبات کیلئے سلائی کڑھائی سینٹر کا خصوصی نظم</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <i class="fas fa-star"></i>
+                        <h3 data-translate="feature_special_title">جامعہ ہذا کی خصوصیات</h3>
+                        <p data-translate="feature_special_desc">تجربه کار و با صلاحیت معلمات، پردہ کا مکمل انتظام، پاکیزہ ماحول میں تعلیم و تربیت کا معقول نظم</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <i class="fas fa-home"></i>
+                        <h3 data-translate="feature_facilities_title">سہولیات</h3>
+                        <p data-translate="feature_facilities_desc">قیام و طعام کی بہتر سہولیت کے ساتھ تربیت پر بھی خصوصی توجہ ، صاف شفاف و کشادہ کمرے، ہفتہ میں چھٹی کے دن کھانا بنانے کی ٹریننگ</p>
+                    </div>
+                </div>
+                
+                <div class="appeal-section">
+                    <h2 data-translate="appeal_title">اپیل</h2>
+                    <p data-translate="appeal_content">جامعہ ہذا میں قیام کرنے والی بچیوں کی اکثر تعداد غریب ونادار اور یتیم ہے جن کے قیام و طعام تعلیم و تربیت اور علاج و معالجہ سمیت دیگر بنیادی ضرورتوں کی تکمیل جامعہ ہذا کے ذریعے کی جاتی ہے۔  کو رونا ولاک ڈاؤن کے بعد سے ادارہ ہذا مالی بحران کا شکار ہے لہذا آپ تمام برادران ملت سے پر خلوص و مؤدبانہ التماس ہے کہ رمضان المبارک کے اس مقدس مہینے میں اپنے زکوۃ ، صدقات ، عطیات اور دیگر رقوم جامعہ کے مندرجہ ذیل اکاؤنٹ میں بھیج کر عنداللہ ماجور ہوں گے انشاء اللہ صدقہ جاریہ ہوگا۔</p>
+                </div>
+                
+                <div class="bank-details">
+                    <h3 data-translate="bank_details_title">بینک اکاؤنٹ کی تفصیل</h3>
+                    <p><strong>HDFC.BANK BETTIAH WEST CHAMPARAN BIHAR</strong></p>
+                    <p><strong data-translate="account_name">A/C NAME:</strong> AL-KARIM EDUCATIONAL & WELFARE TRUST</p>
+                    <p><strong data-translate="account_number">A/C NO:</strong> 50200049037730</p>
+                    <p><strong data-translate="ifsc_code">IFSC CODE:</strong> HDFC0001648</p>
+                    <p><strong data-translate="payment_number">PHONE PAY OR GOOGLE PAY NO:</strong> 8439786247</p>
+                </div>
+                
+                <p style="text-align: center; margin-top: 30px; font-weight: bold; font-size: 1.2rem;" data-translate="signature">
+                    الملتمس: مولانا ابواللیث انور قاسمی مہتمم جامعہ ام القرى للبنات بتیا
+                </p>
+            </div>
+        </section>
+
+        <!-- اکیڈمک پیج -->
+        <section id="academic" class="page-section">
+            <div class="academic-container">
+                <div class="academic-header">
+                    <div class="academic-header-content">
+                        <h1 data-translate="admission_title">داخلہ جاری ہے! (صرف طالبات کے لیے)</h1>
+                        <p data-translate="admission_subtitle">الحمدللہ! جامعہ ام القری للبنات بیتیا چمپارن میں نئے تعلیمی سال کے داخلے شروع ہو چکے ہیں۔</p>
+                    </div>
+                </div>
+                
+                <div class="academic-content">
+                    <div class="decoration">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    
+                    <div class="section">
+                        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> <span data-translate="education_offered">ہمارے ہاں فراہم کی جانے والی تعلیم</span></h2>
+                        <ul class="education-list">
+                            <li><i class="fas fa-book-quran"></i> <span data-translate="education_1">ناظرہ و حفظِ قرآن (مع تجوید)</span></li>
+                            <li><i class="fas fa-book-open"></i> <span data-translate="education_2">درسِ نظامی (عالمہ کورس)</span></li>
+                            <li><i class="fas fa-language"></i> <span data-translate="education_3">اردو، انگریزی اور عربی زبان کی تعلیم</span></li>
+                            <li><i class="fas fa-laptop-code"></i> <span data-translate="education_4">کمپیوٹر و دیگر جدید علوم کی بنیادی تربیت</span></li>
+                            <li><i class="fas fa-hands-helping"></i> <span data-translate="education_5">اسلامی آداب، اخلاق اور تربیتی نشستیں</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dates">
+                        <p><i class="far fa-calendar-alt"></i> <strong data-translate="admission_start">داخلے کا آغاز:</strong> <span data-translate="admission_start_date">دس شوال المکرم</span></p>
+                        <p><i class="far fa-calendar-check"></i> <strong data-translate="admission_end">آخری تاریخ:</strong> <span data-translate="admission_end_date">27 شوال المکرم</span></p>
+                    </div>
+                    
+                    <div class="section">
+                        <h2 class="section-title"><i class="fas fa-star"></i> <span data-translate="additional_facilities">اضافی سہولیات</span></h2>
+                        <ul class="facilities-list">
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="facility_1">محفوظ اور پرسکون تعلیمی ماحول</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="facility_2">ماہر اور تربیت یافتہ معلمات</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="facility_3">نصاب کے ساتھ ہم نصابی سرگرمیاں</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact">
+                        <h3 data-translate="registration_contact">رجسٹریشن کے لیے رابطہ کریں</h3>
+                        <p><strong data-translate="principal_name">مولانا ابواللیث قاسمی</strong></p>
+                        <p data-translate="principal_position">بانی و مہتمم جامعہ</p>
+                        <p class="phone" data-translate="phone_number">8439786247 :فون نمبر</p>
+                    </div>
+                    
+                    <p class="note" data-translate="admission_note">اپنی بیٹیوں کے روشن مستقبل کے لیے آج ہی رجسٹریشن کرائیں! <span class="highlight" data-translate="limited_seats">محدود نشستیں دستیاب ہیں</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ہیلپ پیج -->
+        <section id="help" class="page-section">
+            <div class="container">
+                <div class="help-section">
+                    <h2 data-translate="help_title">آپ ہماری مدد اس طرح کر سکتے ہیں</h2>
+                    
+                    <div class="help-options">
+                        <div class="help-option">
+                            <h3 data-translate="help_option_1">ایک طالبہ کی سالانہ کفالت</h3>
+                            <p data-translate="help_cost_1">صرفہ: پچیس ہزار روپے</p>
+                        </div>
+                        
+                        <div class="help-option">
+                            <h3 data-translate="help_option_2">ایک درسگاہ تعمیر کراکے</h3>
+                            <p data-translate="help_cost_2">صرفہ: تین لاکھ روپے<br>(اپنے مرحومین کے لئے)</p>
+                        </div>
+                        
+                        <div class="help-option">
+                            <h3 data-translate="help_option_3">یتیم وغریب طلباء کے لئے کتاب و ڈریس</h3>
+                            <p data-translate="help_cost_3">صرفہ: تین ہزار روپے</p>
+                        </div>
+                        
+                        <div class="help-option">
+                            <h3 data-translate="help_option_4">کتب خانہ تعمیر کرا کے</h3>
+                            <p data-translate="help_cost_4">صرفہ: بیس لاکھ روپے</p>
+                        </div>
+                        
+                        <div class="help-option">
+                            <h3 data-translate="help_option_5">کمپیوٹر لیب تعمیر کرا کے</h3>
+                            <p data-translate="help_cost_5">صرفہ: دس لاکھ روپے</p>
+                        </div>
+                        
+                        <div class="help-option">
+                            <h3 data-translate="help_option_6">ایک کٹھہ زمین دےکر</h3>
+                            <p data-translate="help_cost_6">صرفہ: پانچ لاکھ روپے</p>
+                        </div>
+                        
+                        <div class="help-option">
+                            <h3 data-translate="help_option_7">ڈائنگ ہال تعمیر کرا کے</h3>
+                            <p data-translate="help_cost_7">صرفہ: پانچ لاکھ روپے</p>
+                        </div>
+                        
+                        <div class="help-option">
+                            <h3 data-translate="help_option_8">ایک معلمہ کی سالانہ تنخواہ کی کفالت</h3>
+                            <p data-translate="help_cost_8">صرفہ: ایک لاکھ بیس ہزار روپے</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bank-details">
+                    <h3 data-translate="bank_details_title">بینک اکاؤنٹ کی تفصیل</h3>
+                    <p><strong>HDFC.BANK BETTIAH WEST CHAMPARAN BIHAR</strong></p>
+                    <p><strong data-translate="account_name">A/C NAME:</strong> AL-KARIM EDUCATIONAL & WELFARE TRUST</p>
+                    <p><strong data-translate="account_number">A/C NO:</strong> 50200049037730</p>
+                    <p><strong data-translate="ifsc_code">IFSC CODE:</strong> HDFC0001648</p>
+                    <p><strong data-translate="payment_number">PHONE PAY OR GOOGLE PAY NO:</strong> 8439786247</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- گیلری پیج -->
+        <section id="gallery" class="page-section">
+            <div class="container">
+                <div class="gallery-section">
+                    <h2 data-translate="gallery_title">ہماری گیلری</h2>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="http://juqlb.in/wp-content/uploads/2025/03/IMG-20250318-WA0028.jpg" alt="جامعہ کی تصویر">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="http://juqlb.in/wp-content/uploads/2025/03/IMG-20250317-WA0019.jpg" alt="جامعہ کی تصویر">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="http://juqlb.in/wp-content/uploads/2025/03/IMG-20250318-WA0027.jpg" alt="جامعہ کی تصویر">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="http://juqlb.in/wp-content/uploads/2025/03/IMG-20250318-WA0039.jpg" alt="جامعہ کی تصویر">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="http://juqlb.in/wp-content/uploads/2025/03/IMG-20250318-WA0038.jpg" alt="جامعہ کی تصویر">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="http://juqlb.in/wp-content/uploads/2025/03/IMG-20250319-WA0025.jpg" alt="جامعہ کی تصویر">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="http://juqlb.in/wp-content/uploads/2025/03/IMG-20250319-WA0022.jpg" alt="جامعہ کی تصویر">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="http://juqlb.in/wp-content/uploads/2025/03/IMG-20250319-WA0024.jpg" alt="جامعہ کی تصویر">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- رابطہ پیج -->
+        <section id="contact" class="page-section">
+            <div class="container">
+                <div class="contact-section">
+                    <h2 data-translate="contact_title">ہم سے رابطہ کریں</h2>
+                    
+                    <div class="contact-details">
+                        <div class="contact-card">
+                            <h3 data-translate="contact_details">رابطے کی تفصیل</h3>
+                            <p><i class="fas fa-phone"></i> 8439786247</p>
+                            <p><i class="fas fa-phone"></i> 8881879342</p>
+                            <p><i class="fas fa-envelope"></i> abullaisanwar1966@gmail.com</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h3 data-translate="address_title">پتہ</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> <span data-translate="address_line1">لالو نگر، تھانہ بتیا کے قریب</span></p>
+                            <p data-translate="address_line2">ضلع مغربی چمپارن، بہار</p>
+                            <p data-translate="address_pincode">پن کوڈ: 855453</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h3 data-translate="bank_info">بینک کی تفصیل</h3>
+                            <p><i class="fas fa-university"></i> <span data-translate="bank_name">HDFC بینک، بتیا</span></p>
+                            <p><i class="fas fa-user"></i> <span data-translate="account_holder">AL-KARIM EDUCATIONAL & WELFARE TRUST</span></p>
+                            <p><i class="fas fa-credit-card"></i> <span data-translate="account_no">اکاؤنٹ نمبر: 50200049037730</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.322521458435!2d84.50131431504244!3d26.665350083224313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992a3c4b1c5c5c5%3A0x8a6c5c5c5c5c5c5c!2sBettiah%2C%20Bihar%20845453!5e0!3m2!1sen!2sin!4v1647856789018!5m2!1sen!2sin" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ====== فوٹر ====== -->
+    <footer class="juqlb-footer">
+        <div class="footer-container">
+            <!-- 1️⃣ ادارے کی معلومات -->
+            <div class="footer-box">
+                <h3 data-translate="footer_institute">جامعۃ أم القری للبنات</h3>
+                <p data-translate="footer_trust">الکریم ایجوکیشنل اینڈ ویلفیئر ٹرسٹ کے زیر انتظام</p>
+                <p data-translate="footer_address">لالو نگر، تھانہ بتیا کے قریب،<br>ضلع مغربی چمپارن، بہار – 855453</p>
+            </div>
+
+            <!-- 2️⃣ رابطے کی معلومات -->
+            <div class="footer-box">
+                <h3 data-translate="footer_contact">ہم سے رابطہ کریں</h3>
+                <p><i class="fa-solid fa-phone"></i> 8439786247<br><i class="fa-solid fa-phone"></i> 8881879342</p>
+                <p><i class="fa-solid fa-envelope"></i> abullaisanwar1966@gmail.com</p>
+                <p><i class="fa-solid fa-globe"></i> 
+                    <a href="https://juqlb.in" target="_blank">www.juqlb.in</a>
+                </p>
+            </div>
+
+            <!-- 3️⃣ فوری لنکس -->
+            <div class="footer-box">
+                <h3 data-translate="footer_quick_links">فوری لنکس</h3>
+                <ul class="quick-links">
+                    <li><a class="nav-link" data-page="home" data-translate="menu_home">ہوم</a></li>
+                    <li><a class="nav-link" data-page="academic" data-translate="menu_admission">تعلیمی</a></li>
+                    <li><a class="nav-link" data-page="gallery" data-translate="menu_gallery">تصویری و ویڈیو گیلری</a></li>
+                    <li><a class="nav-link" data-page="contact" data-translate="menu_contact">رابطہ کریں</a></li>
+                    <li><a class="nav-link" data-page="help" data-translate="menu_help">عطیہ</a></li>
+                </ul>
+            </div>
+
+            <!-- 4️⃣ سوشل میڈیا -->
+            <div class="footer-box">
+                <h3 data-translate="footer_follow">ہمیں فالو کریں</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i> <span data-translate="social_facebook">فیسبک</span></a><br>
+                    <a href="#"><i class="fab fa-instagram"></i> <span data-translate="social_instagram">انسٹاگرام</span></a><br>
+                    <a href="#"><i class="fab fa-youtube"></i> <span data-translate="social_youtube">یوٹیوب</span></a><br>
+                    <a href="#"><i class="fab fa-x-twitter"></i> <span data-translate="social_twitter">ٹویٹر</span></a>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+            <p data-translate="footer_copyright">© 2025 جامعۃ أم القری للبنات | جملہ حقوق محفوظ ہیں</p>
+            <p data-translate="footer_design">ڈیزائن اور مینٹیننس 
+                <a href="https://qasmiwebtech.in" target="_blank">قاسمی ویب ٹیک</a>
+            </p>
+        </div>
+
+        <!-- 📞 فلوٹنگ بٹن -->
+        <a href="tel:+918439786247" class="float-btn call-btn" title="ہمیں کال کریں">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+
+        <a href="https://wa.me/918439786247" class="float-btn whatsapp-btn" title="واٹس ایپ پر بات کریں">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </footer>
+
+    <script>
+        // زبان کا ڈیٹا
+        const translations = {
+            en: {
+                // Header
+                bismillah: "In the name of Allah, the Most Gracious, the Most Merciful",
+                institute_name_en: "JAMIA UMMUL QURA LILBANAT BETTIAH",
+                address_en: "Lalu Nagar, Near PS Bettiah, Dist. West Champaran, Bihar – 855453",
+                trust_en: "(Managed by Al-Karim Educational and Welfare Trust)",
+                phone: "8439786247 | 8881879342",
+                email: "abullaisanwar1966@gmail.com",
+                institute_name_ur: "Jamia Ummul Qura Lilbanat",
+                address_ur: "Lalu Nagar, Near PS Bettiah, West Champaran, Bihar",
+                trust_ur: "Managed by Al-Karim Educational and Welfare Trust",
+                
+                // Menu
+                menu_home: "Home",
+                menu_admission: "Admission",
+                menu_help: "Help",
+                menu_gallery: "Gallery",
+                menu_contact: "Contact",
+                
+                // Home Page
+                home_title: "Jamia Ummul Qura Lilbanat",
+                home_subtitle: "Lalu Nagar, Near PS Bettiah, West Champaran, Bihar",
+                home_trust: "Managed by Al-Karim Educational and Welfare Trust",
+                home_content_1: "Knowledge is the most valuable asset of human life. The first revelation of the Holy Quran to our Prophet Muhammad (PBUH) began with the word 'Iqra', which means 'Read'. This highlights the importance of acquiring knowledge, which is why Muslims have always paid special attention to education, whether men or women. They established madrasas and educational institutions, wrote books, produced great scholars, and created a glorious intellectual history that has no parallel in the world.",
+                home_content_2: "In today's era, every nation is paying special attention to educating its youth. Those nations that were far behind in education in the past are also improving their social and financial conditions by acquiring education today. But surprisingly, Muslims, who were encouraged by the Quran to acquire knowledge the most, have fallen behind in the field of education today.",
+                home_content_3: "To achieve these objectives, the Jamia was established.",
+                feature_education_title: "Quality Education",
+                feature_education_desc: "Department of Hifz and Qirat and five-year Alimiyat and Fazilat course, also special arrangement of sewing and embroidery center for interested female students",
+                feature_special_title: "Special Features of the Jamia",
+                feature_special_desc: "Experienced and qualified teachers, complete arrangement of purdah, reasonable system of education and training in a pure environment",
+                feature_facilities_title: "Facilities",
+                feature_facilities_desc: "Better accommodation and food facilities with special attention to training, clean and spacious rooms, cooking training on weekly holidays",
+                appeal_title: "Appeal",
+                appeal_content: "Most of the girls residing in this Jamia are poor, needy and orphans whose accommodation, food, education, training, treatment and other basic needs are fulfilled through this Jamia. Since the Corona lockdown, this institution has been facing a financial crisis, so we humbly and sincerely request all brothers of the community that in this holy month of Ramadan, by sending your Zakat, Sadaqat, donations and other amounts to the following account of the Jamia, you will be rewarded by Allah, InshaAllah it will be a Sadaqah Jariyah.",
+                bank_details_title: "Bank Account Details",
+                account_name: "A/C NAME:",
+                account_number: "A/C NO:",
+                ifsc_code: "IFSC CODE:",
+                payment_number: "PHONE PAY OR GOOGLE PAY NO:",
+                signature: "Petitioner: Maulana Abul Lais Anwar Qasmi, Principal Jamia Ummul Qura Lilbanat Bettiah",
+                
+                // Academic Page
+                admission_title: "Admissions Open! (For Female Students Only)",
+                admission_subtitle: "Alhamdulillah! Admissions for the new academic year have started at Jamia Ummul Qura Lilbanat Bettiah Champaran.",
+                education_offered: "Education Offered at Our Institution",
+                education_1: "Nazra and Hifz of Quran (with Tajweed)",
+                education_2: "Dars-e-Nizami (Alimah Course)",
+                education_3: "Education in Urdu, English and Arabic languages",
+                education_4: "Basic training in computer and other modern sciences",
+                education_5: "Islamic manners, ethics and training sessions",
+                admission_start: "Admission Start:",
+                admission_start_date: "10th Shawwal al-Mukarram",
+                admission_end: "Last Date:",
+                admission_end_date: "27th Shawwal al-Mukarram",
+                additional_facilities: "Additional Facilities",
+                facility_1: "Safe and peaceful educational environment",
+                facility_2: "Expert and trained female teachers",
+                facility_3: "Co-curricular activities along with curriculum",
+                registration_contact: "For Registration Contact",
+                principal_name: "Maulana Abul Lais Qasmi",
+                principal_position: "Founder and Principal of Jamia",
+                phone_number: "Phone Number: 8439786247",
+                admission_note: "Register today for your daughters' bright future!",
+                limited_seats: "Limited seats available",
+                
+                // Help Page
+                help_title: "You Can Help Us In These Ways",
+                help_option_1: "Annual Sponsorship of One Student",
+                help_cost_1: "Cost: Twenty Five Thousand Rupees",
+                help_option_2: "Constructing a Classroom",
+                help_cost_2: "Cost: Three Lakh Rupees<br>(For your deceased)",
+                help_option_3: "Books and Dress for Orphan and Poor Students",
+                help_cost_3: "Cost: Three Thousand Rupees",
+                help_option_4: "Constructing a Library",
+                help_cost_4: "Cost: Twenty Lakh Rupees",
+                help_option_5: "Constructing a Computer Lab",
+                help_cost_5: "Cost: Ten Lakh Rupees",
+                help_option_6: "Donating a Plot of Land",
+                help_cost_6: "Cost: Five Lakh Rupees",
+                help_option_7: "Constructing a Dining Hall",
+                help_cost_7: "Cost: Five Lakh Rupees",
+                help_option_8: "Annual Salary Sponsorship of One Teacher",
+                help_cost_8: "Cost: One Lakh Twenty Thousand Rupees",
+                
+                // Gallery Page
+                gallery_title: "Our Gallery",
+                
+                // Contact Page
+                contact_title: "Contact Us",
+                contact_details: "Contact Details",
+                address_title: "Address",
+                address_line1: "Lalu Nagar, Near PS Bettiah",
+                address_line2: "West Champaran District, Bihar",
+                address_pincode: "Pin Code: 855453",
+                bank_info: "Bank Details",
+                bank_name: "HDFC Bank, Bettiah",
+                account_holder: "AL-KARIM EDUCATIONAL & WELFARE TRUST",
+                account_no: "Account Number: 50200049037730",
+                
+                // Footer
+                footer_institute: "Jamia Ummul Qura Lilbanat",
+                footer_trust: "Managed by Al-Karim Educational and Welfare Trust",
+                footer_address: "Lalu Nagar, Near PS Bettiah,<br>West Champaran District, Bihar – 855453",
+                footer_contact: "Contact Us",
+                footer_quick_links: "Quick Links",
+                footer_follow: "Follow Us",
+                footer_copyright: "© 2025 Jamia Ummul Qura Lilbanat | All Rights Reserved",
+                footer_design: "Designed & Maintained by",
+                social_facebook: "Facebook",
+                social_instagram: "Instagram",
+                social_youtube: "YouTube",
+                social_twitter: "Twitter"
+            },
+            ur: {
+                // Header
+                bismillah: "بِسْمِ اللّٰہِ الرَّحْمٰنِ الرَّحِیْمِ",
+                institute_name_en: "JAMIA UMMUL QURA LILBANAT BETTIAH",
+                address_en: "Lalu Nagar, Near PS Bettiah, Dist. West Champaran, Bihar – 855453",
+                trust_en: "(Managed by Al-Karim Educational and Welfare Trust)",
+                phone: "8439786247 | 8881879342",
+                email: "abullaisanwar1966@gmail.com",
+                institute_name_ur: "جامعۃ أم القری للبنات",
+                address_ur: "لالو نگر متصل تھانہ بتیا<br>ضلع مغربی چمپارن، بہار",
+                trust_ur: "زیرِ انتظام: الکریم ایجوکیشنل اینڈ ویلفیئر ٹرسٹ",
+                
+                // Menu
+                menu_home: "ہوم",
+                menu_admission: "داخلہ",
+                menu_help: "مدد",
+                menu_gallery: "گیلری",
+                menu_contact: "رابطہ",
+                
+                // Home Page
+                home_title: "جامعة ام القرى للبنات",
+                home_subtitle: "لالونگر متصل تھانہ بتیا ضلع مغربی چمپارن بہار",
+                home_trust: "زیر انتظام : الکریم ایجوکیشنل اینڈ ویلفیئر ٹرسٹ",
+                home_content_1: "علم انسانی زندگی کا سب سے قیمتی اثاثہ ہے۔ قرآن مجید کی سب سے پہلی وحی جو ہمارے نبی کریم ﷺ پر نازل ہوئی، اس کا آغاز لفظ \"اقرأ\" سے ہوتا ہے، جس کا مطلب ہے \"پڑھو\"۔ یہ بات علم حاصل کرنے کی اہمیت کو واضح کرتی ہے، اور یہی وجہ ہے کہ مسلمانوں نے ہمیشہ تعلیم پر خصوصی توجہ دی ہے، خواہ وہ مرد ہوں یا عورتیں۔ انہوں نے مدارس اور علمی ادارے قائم کیے، کتابیں لکھیں، بڑے بڑے علماء پیدا کیے، اور ایک شاندار علمی تاریخ رقم کی جس کی مثال دنیا میں نہیں ملتی۔",
+                home_content_2: "آج کے دور میں ہر قوم اپنے نوجوانوں کو تعلیم دلوانے پر خصوصی توجہ دے رہی ہے۔ وہ قومیں جو ماضی میں تعلیمی لحاظ سے بہت پیچھے تھیں، آج کے دور میں وہ بھی تعلیم حاصل کر کے اپنے سماجی اور مالی حالات کو بہتر بنا رہی ہیں۔ لیکن حیرت کی بات یہ ہے کہ مسلمان، جنہیں قرآن نے سب سے زیادہ تعلیم حاصل کرنے کی ترغیب دی، آج تعلیمی میدان میں پیچھے رہ گئے ہیں۔",
+                home_content_3: "انہی مقاصد کو پورا کرنےکے لئے جامعہ کا قیام عمل میں آیا۔",
+                feature_education_title: "معیار تعلیم",
+                feature_education_desc: "شعبہ حفظ و قرآت و پانچ سالہ عالمیت و فضیلت کا کورس ، نیز خواہش مند طالبات کیلئے سلائی کڑھائی سینٹر کا خصوصی نظم",
+                feature_special_title: "جامعہ ہذا کی خصوصیات",
+                feature_special_desc: "تجربه کار و با صلاحیت معلمات، پردہ کا مکمل انتظام، پاکیزہ ماحول میں تعلیم و تربیت کا معقول نظم",
+                feature_facilities_title: "سہولیات",
+                feature_facilities_desc: "قیام و طعام کی بہتر سہولیت کے ساتھ تربیت پر بھی خصوصی توجہ ، صاف شفاف و کشادہ کمرے، ہفتہ میں چھٹی کے دن کھانا بنانے کی ٹریننگ",
+                appeal_title: "اپیل",
+                appeal_content: "جامعہ ہذا میں قیام کرنے والی بچیوں کی اکثر تعداد غریب ونادار اور یتیم ہے جن کے قیام و طعام تعلیم و تربیت اور علاج و معالجہ سمیت دیگر بنیادی ضرورتوں کی تکمیل جامعہ ہذا کے ذریعے کی جاتی ہے۔  کو رونا ولاک ڈاؤن کے بعد سے ادارہ ہذا مالی بحران کا شکار ہے لہذا آپ تمام برادران ملت سے پر خلوص و مؤدبانہ التماس ہے کہ رمضان المبارک کے اس مقدس مہینے میں اپنے زکوۃ ، صدقات ، عطیات اور دیگر رقوم جامعہ کے مندرجہ ذیل اکاؤنٹ میں بھیج کر عنداللہ ماجور ہوں گے انشاء اللہ صدقہ جاریہ ہوگا۔",
+                bank_details_title: "بینک اکاؤنٹ کی تفصیل",
+                account_name: "A/C NAME:",
+                account_number: "A/C NO:",
+                ifsc_code: "IFSC CODE:",
+                payment_number: "PHONE PAY OR GOOGLE PAY NO:",
+                signature: "الملتمس: مولانا ابواللیث انور قاسمی مہتمم جامعہ ام القرى للبنات بتیا",
+                
+                // Academic Page
+                admission_title: "داخلہ جاری ہے! (صرف طالبات کے لیے)",
+                admission_subtitle: "الحمدللہ! جامعہ ام القری للبنات بیتیا چمپارن میں نئے تعلیمی سال کے داخلے شروع ہو چکے ہیں۔",
+                education_offered: "ہمارے ہاں فراہم کی جانے والی تعلیم",
+                education_1: "ناظرہ و حفظِ قرآن (مع تجوید)",
+                education_2: "درسِ نظامی (عالمہ کورس)",
+                education_3: "اردو، انگریزی اور عربی زبان کی تعلیم",
+                education_4: "کمپیوٹر و دیگر جدید علوم کی بنیادی تربیت",
+                education_5: "اسلامی آداب، اخلاق اور تربیتی نشستیں",
+                admission_start: "داخلے کا آغاز:",
+                admission_start_date: "دس شوال المکرم",
+                admission_end: "آخری تاریخ:",
+                admission_end_date: "27 شوال المکرم",
+                additional_facilities: "اضافی سہولیات",
+                facility_1: "محفوظ اور پرسکون تعلیمی ماحول",
+                facility_2: "ماہر اور تربیت یافتہ معلمات",
+                facility_3: "نصاب کے ساتھ ہم نصابی سرگرمیاں",
+                registration_contact: "رجسٹریشن کے لیے رابطہ کریں",
+                principal_name: "مولانا ابواللیث قاسمی",
+                principal_position: "بانی و مہتمم جامعہ",
+                phone_number: "8439786247 :فون نمبر",
+                admission_note: "اپنی بیٹیوں کے روشن مستقبل کے لیے آج ہی رجسٹریشن کرائیں!",
+                limited_seats: "محدود نشستیں دستیاب ہیں",
+                
+                // Help Page
+                help_title: "آپ ہماری مدد اس طرح کر سکتے ہیں",
+                help_option_1: "ایک طالبہ کی سالانہ کفالت",
+                help_cost_1: "صرفہ: پچیس ہزار روپے",
+                help_option_2: "ایک درسگاہ تعمیر کراکے",
+                help_cost_2: "صرفہ: تین لاکھ روپے<br>(اپنے مرحومین کے لئے)",
+                help_option_3: "یتیم وغریب طلباء کے لئے کتاب و ڈریس",
+                help_cost_3: "صرفہ: تین ہزار روپے",
+                help_option_4: "کتب خانہ تعمیر کرا کے",
+                help_cost_4: "صرفہ: بیس لاکھ روپے",
+                help_option_5: "کمپیوٹر لیب تعمیر کرا کے",
+                help_cost_5: "صرفہ: دس لاکھ روپے",
+                help_option_6: "ایک کٹھہ زمین دےکر",
+                help_cost_6: "صرفہ: پانچ لاکھ روپے",
+                help_option_7: "ڈائنگ ہال تعمیر کرا کے",
+                help_cost_7: "صرفہ: پانچ لاکھ روپے",
+                help_option_8: "ایک معلمہ کی سالانہ تنخواہ کی کفالت",
+                help_cost_8: "صرفہ: ایک لاکھ بیس ہزار روپے",
+                
+                // Gallery Page
+                gallery_title: "ہماری گیلری",
+                
+                // Contact Page
+                contact_title: "ہم سے رابطہ کریں",
+                contact_details: "رابطے کی تفصیل",
+                address_title: "پتہ",
+                address_line1: "لالو نگر، تھانہ بتیا کے قریب",
+                address_line2: "ضلع مغربی چمپارن، بہار",
+                address_pincode: "پن کوڈ: 855453",
+                bank_info: "بینک کی تفصیل",
+                bank_name: "HDFC بینک، بتیا",
+                account_holder: "AL-KARIM EDUCATIONAL & WELFARE TRUST",
+                account_no: "اکاؤنٹ نمبر: 50200049037730",
+                
+                // Footer
+                footer_institute: "جامعۃ أم القری للبنات",
+                footer_trust: "الکریم ایجوکیشنل اینڈ ویلفیئر ٹرسٹ کے زیر انتظام",
+                footer_address: "لالو نگر، تھانہ بتیا کے قریب،<br>ضلع مغربی چمپارن، بہار – 855453",
+                footer_contact: "ہم سے رابطہ کریں",
+                footer_quick_links: "فوری لنکس",
+                footer_follow: "ہمیں فالو کریں",
+                footer_copyright: "© 2025 جامعۃ أم القری للبنات | جملہ حقوق محفوظ ہیں",
+                footer_design: "ڈیزائن اور مینٹیننس",
+                social_facebook: "فیسبک",
+                social_instagram: "انسٹاگرام",
+                social_youtube: "یوٹیوب",
+                social_twitter: "ٹویٹر"
+            },
+            ar: {
+                // Header
+                bismillah: "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ",
+                institute_name_en: "JAMIA UMMUL QURA LILBANAT BETTIAH",
+                address_en: "Lalu Nagar, Near PS Bettiah, Dist. West Champaran, Bihar – 855453",
+                trust_en: "(Managed by Al-Karim Educational and Welfare Trust)",
+                phone: "8439786247 | 8881879342",
+                email: "abullaisanwar1966@gmail.com",
+                institute_name_ur: "جامعة أم القرى للبنات",
+                address_ur: "لالو نگر متصل تھانہ بتیا<br>ضلع مغربی چمپارن، بہار",
+                trust_ur: "تحت إدارة: الصدقة التعليمية والرعاية الخيرية",
+                
+                // Menu
+                menu_home: "الرئيسية",
+                menu_admission: "القبول",
+                menu_help: "المساعدة",
+                menu_gallery: "المعرض",
+                menu_contact: "اتصل بنا",
+                
+                // Home Page
+                home_title: "جامعة أم القرى للبنات",
+                home_subtitle: "لالو نگر متصل تھانہ بتیا ضلع مغربی چمپارن بہار",
+                home_trust: "تحت إدارة: الصدقة التعليمية والرعاية الخيرية",
+                home_content_1: "العلم هو أثمن كنز في حياة الإنسان. أول وحي من القرآن الكريم لنبينا محمد ﷺ بدأ بكلمة 'اقرأ'، مما يبرز أهمية طلب العلم، ولهذا السبب أولى المسلمون دائمًا اهتمامًا خاصًا بالتعليم، سواء كانوا رجالاً أم نساءً. أسسوا المدارس والمؤسسات التعليمية، وكتبوا الكتب، وأنتجوا علماء عظماء، وخلقوا تاريخًا فكريًا مجيدًا لا مثيل له في العالم.",
+                home_content_2: "في عصرنا الحالي، تولي كل أمة اهتمامًا خاصًا بتعليم شبابها. تلك الأمم التي كانت متخلفة في التعليم في الماضي تحسن أيضًا ظروفها الاجتماعية والمالية باكتساب التعليم اليوم. ولكن من المدهش أن المسلمين، الذين شجعهم القرآن على طلب العلم أكثر من غيرهم، قد تأخروا في مجال التعليم اليوم.",
+                home_content_3: "لتحقيق هذه الأهداف، تم إنشاء الجامعة.",
+                feature_education_title: "جودة التعليم",
+                feature_education_desc: "قسم الحفظ والقراءة ودورة العالمية والفاضلية لمدة خمس سنوات، أيضًا ترتيب خاص لمركز الخياطة والتطريز للطالبات المهتمات",
+                feature_special_title: "المميزات الخاصة للجامعة",
+                feature_special_desc: "معلمات ذوات خبرة ومؤهلات، ترتيب كامل للحجاب، نظام معقول للتعليم والتدريب في بيئة نقية",
+                feature_facilities_title: "المرافق",
+                feature_facilities_desc: "مرافق إقامة وطعام أفضل مع اهتمام خاص بالتدريب، غرف نظيفة وواسعة، تدريب على الطهي في الإجازات الأسبوعية",
+                appeal_title: "نداء",
+                appeal_content: "معظم الفتيات المقيمات في هذه الجامعة فقيرات ومحتاجات ويتيمات، حيث يتم تلبية احتياجاتهن الأساسية من الإقامة والطعام والتعليم والتدريب والعلاج وغيرها من خلال هذه الجامعة. منذ إغلاق كورونا، تواجه هذه المؤسسة أزمة مالية، لذلك نطلب من جميع إخوة المجتمع بتواضع وإخلاص أنه في هذا الشهر المبارك من رمضان، بإرسال زكاتكم وصدقاتكم وتبرعاتكم ومبالغ أخرى إلى الحساب التالي للجامعة، ستُكافؤون من قبل الله، إن شاء الله ستكون صدقة جارية.",
+                bank_details_title: "تفاصيل الحساب البنكي",
+                account_name: "اسم الحساب:",
+                account_number: "رقم الحساب:",
+                ifsc_code: "رمز IFSC:",
+                payment_number: "رقم الهاتف الدفع أو جوجل باي:",
+                signature: "المتوسل: المولانا أبو الليث أنور القاسمي، رئيس جامعة أم القرى للبنات بتيّا",
+                
+                // Academic Page
+                admission_title: "التسجيل مفتوح! (لطالبات فقط)",
+                admission_subtitle: "الحمد لله! بدأت القبولات للعام الدراسي الجديد في جامعة أم القرى للبنات بيتيا تشامباران.",
+                education_offered: "التعليم المقدم في مؤسستنا",
+                education_1: "النظرة والحفظ للقرآن (مع التجويد)",
+                education_2: "الدراسة النظامية (دورة العالمة)",
+                education_3: "التعليم باللغات الأردية والإنجليزية والعربية",
+                education_4: "التدريب الأساسي في الحاسوب والعلوم الحديثة الأخرى",
+                education_5: "الآداب الإسلامية، الأخلاق وجلسات التدريب",
+                admission_start: "بدء القبول:",
+                admission_start_date: "العاشر من شوال المكرم",
+                admission_end: "آخر موعد:",
+                admission_end_date: "السابع والعشرون من شوال المكرم",
+                additional_facilities: "مرافق إضافية",
+                facility_1: "بيئة تعليمية آمنة وهادئة",
+                facility_2: "معلمات خبيرات ومدربات",
+                facility_3: "أنشطة منهجية مصاحبة للمنهج",
+                registration_contact: "للتسجيل اتصل",
+                principal_name: "المولانا أبو الليث القاسمي",
+                principal_position: "مؤسس ورئيس الجامعة",
+                phone_number: "رقم الهاتف: 8439786247",
+                admission_note: "سجل اليوم لمستقبل مشرق لبناتك!",
+                limited_seats: "مقاعد محدودة متاحة",
+                
+                // Help Page
+                help_title: "يمكنك مساعدتنا بهذه الطرق",
+                help_option_1: "الرعاية السنوية لطالبة واحدة",
+                help_cost_1: "التكلفة: خمسة وعشرون ألف روبية",
+                help_option_2: "بناء فصل دراسي",
+                help_cost_2: "التكلفة: ثلاثة lakh روبية<br>(لأمواتكم)",
+                help_option_3: "الكتب والزي للطالبات الأيتام والفقراء",
+                help_cost_3: "التكلفة: ثلاثة آلاف روبية",
+                help_option_4: "بناء مكتبة",
+                help_cost_4: "التكلفة: عشرون lakh روبية",
+                help_option_5: "بناء معمل حاسوب",
+                help_cost_5: "التكلفة: عشرة lakh روبية",
+                help_option_6: "التبرع بقطعة أرض",
+                help_cost_6: "التكلفة: خمسة lakh روبية",
+                help_option_7: "بناء قاعة طعام",
+                help_cost_7: "التكلفة: خمسة lakh روبية",
+                help_option_8: "الرعاية السنوية لراتب معلمة واحدة",
+                help_cost_8: "التكلفة: مائة وعشرون ألف روبية",
+                
+                // Gallery Page
+                gallery_title: "معرضنا",
+                
+                // Contact Page
+                contact_title: "اتصل بنا",
+                contact_details: "تفاصيل الاتصال",
+                address_title: "العنوان",
+                address_line1: "لالو نگر، قرب تھانہ بتیا",
+                address_line2: "ضلع غربي تشامباران، بيهار",
+                address_pincode: "الرمز البريدي: 855453",
+                bank_info: "تفاصيل البنك",
+                bank_name: "بنك HDFC، بتيّا",
+                account_holder: "الصدقة التعليمية والرعاية الخيرية",
+                account_no: "رقم الحساب: 50200049037730",
+                
+                // Footer
+                footer_institute: "جامعة أم القرى للبنات",
+                footer_trust: "تحت إدارة الصدقة التعليمية والرعاية الخيرية",
+                footer_address: "لالو نگر، قرب تھانہ بتیا،<br>ضلع غربي تشامباران، بيهار – 855453",
+                footer_contact: "اتصل بنا",
+                footer_quick_links: "روابط سريعة",
+                footer_follow: "تابعنا",
+                footer_copyright: "© 2025 جامعة أم القرى للبنات | جميع الحقوق محفوظة",
+                footer_design: "مصمم ومدار من قبل",
+                social_facebook: "فيسبوك",
+                social_instagram: "إنستغرام",
+                social_youtube: "يوتيوب",
+                social_twitter: "تويتر"
+            },
+            hi: {
+                // Header
+                bismillah: "बिस्मिल्लाहिर रहमानिर रहीम",
+                institute_name_en: "JAMIA UMMUL QURA LILBANAT BETTIAH",
+                address_en: "Lalu Nagar, Near PS Bettiah, Dist. West Champaran, Bihar – 855453",
+                trust_en: "(Managed by Al-Karim Educational and Welfare Trust)",
+                phone: "8439786247 | 8881879342",
+                email: "abullaisanwar1966@gmail.com",
+                institute_name_ur: "जामिया उम्मुल कुरा लिलबनात",
+                address_ur: "लालू नगर, थाना बेतिया के नजदीक<br>पश्चिम चंपारण जिला, बिहार",
+                trust_ur: "प्रबंधन: अल-करीम एजुकेशनल एंड वेलफेयर ट्रस्ट",
+                
+                // Menu
+                menu_home: "होम",
+                menu_admission: "प्रवेश",
+                menu_help: "सहायता",
+                menu_gallery: "गैलरी",
+                menu_contact: "संपर्क",
+                
+                // Home Page
+                home_title: "जामिया उम्मुल कुरा लिलबनात",
+                home_subtitle: "लालू नगर, थाना बेतिया के नजदीक पश्चिम चंपारण जिला, बिहार",
+                home_trust: "प्रबंधन: अल-करीम एजुकेशनल एंड वेलफेयर ट्रस्ट",
+                home_content_1: "ज्ञान मानव जीवन की सबसे मूल्यवान संपत्ति है। पवित्र कुरआन की पहली वही जो हमारे पैगंबर मुहम्मद ﷺ पर उतरी, उसकी शुरुआत 'इकरा' शब्द से हुई, जिसका अर्थ है 'पढ़ो'। यह ज्ञान प्राप्त करने के महत्व को उजागर करता है, और यही कारण है कि मुसलमानों ने हमेशा शिक्षा पर विशेष ध्यान दिया है, चाहे वे पुरुष हों या महिलाएं। उन्होंने मदरसे और शैक्षणिक संस्थान स्थापित किए, किताबें लिखीं, महान विद्वान पैदा किए, और एक शानदार बौद्धिक इतिहास बनाया जिसकी दुनिया में कोई मिसाल नहीं है।",
+                home_content_2: "आज के युग में, हर राष्ट्र अपने युवाओं को शिक्षित करने पर विशेष ध्यान दे रहा है। वे राष्ट्र जो अतीत में शिक्षा के मामले में बहुत पीछे थे, आज शिक्षा प्राप्त करके अपनी सामाजिक और वित्तीय स्थितियों में सुधार कर रहे हैं। लेकिन आश्चर्य की बात यह है कि मुसलमान, जिन्हें कुरआन ने सबसे अधिक ज्ञान प्राप्त करने के लिए प्रोत्साहित किया, आज शिक्षा के क्षेत्र में पीछे रह गए हैं।",
+                home_content_3: "इन उद्देश्यों को पूरा करने के लिए जामिया की स्थापना की गई।",
+                feature_education_title: "गुणवत्तापूर्ण शिक्षा",
+                feature_education_desc: "हिफ़्ज और किरात विभाग और पांच साल की आलिमियत और फाजिलत कोर्स, साथ ही इच्छुक छात्राओं के लिए सिलाई और कढ़ाई केंद्र की विशेष व्यवस्था",
+                feature_special_title: "जामिया की विशेषताएं",
+                feature_special_desc: "अनुभवी और योग्य शिक्षिकाएं, पर्दे की पूरी व्यवस्था, शुद्ध वातावरण में शिक्षा और प्रशिक्षण की उचित व्यवस्था",
+                feature_facilities_title: "सुविधाएं",
+                feature_facilities_desc: "प्रशिक्षण पर विशेष ध्यान देने के साथ बेहतर आवास और भोजन सुविधाएं, साफ और विशाल कमरे, साप्ताहिक छुट्टियों पर खाना पकाने का प्रशिक्षण",
+                appeal_title: "अपील",
+                appeal_content: "इस जामिया में रहने वाली ज्यादातर लड़कियां गरीब, जरूरतमंद और अनाथ हैं, जिनके आवास, भोजन, शिक्षा, प्रशिक्षण, उपचार और अन्य बुनियादी जरूरतों को इस जामिया के माध्यम से पूरा किया जाता है। कोरोना लॉकडाउन के बाद से यह संस्था वित्तीय संकट का सामना कर रही है, इसलिए हम समुदाय के सभी भाइयों से विनम्र और ईमानदारी से अनुरोध करते हैं कि रमजान के इस पवित्र महीने में, अपने जकात, सदकात, दान और अन्य राशि जामिया के निम्नलिखित खाते में भेजकर, आप अल्लाह द्वारा पुरस्कृत किए जाएंगे, इंशाअल्लाह यह सदक़ा-ए-जारिया होगा।",
+                bank_details_title: "बैंक खाता विवरण",
+                account_name: "खाता धारक:",
+                account_number: "खाता संख्या:",
+                ifsc_code: "IFSC कोड:",
+                payment_number: "फोन पे या गूगल पे नंबर:",
+                signature: "याचिकाकर्ता: मौलाना अबुल लैस अनवर कासमी, प्रधान जामिया उम्मुल कुरा लिलबनात बेतिया",
+                
+                // Academic Page
+                admission_title: "प्रवेश जारी है! (केवल छात्राओं के लिए)",
+                admission_subtitle: "अल्हम्दुलिल्लाह! जामिया उम्मुल कुरा लिलबनात बेतिया चंपारण में नए शैक्षणिक वर्ष के प्रवेश शुरू हो गए हैं।",
+                education_offered: "हमारे संस्थान में प्रदान की जाने वाली शिक्षा",
+                education_1: "कुरआन की नजरा और हिफ़्ज (तजवीद के साथ)",
+                education_2: "दर्स-ए-निज़ामी (आलिमा कोर्स)",
+                education_3: "उर्दू, अंग्रेजी और अरबी भाषाओं में शिक्षा",
+                education_4: "कंप्यूटर और अन्य आधुनिक विज्ञानों में बुनियादी प्रशिक्षण",
+                education_5: "इस्लामी शिष्टाचार, नैतिकता और प्रशिक्षण सत्र",
+                admission_start: "प्रवेश प्रारंभ:",
+                admission_start_date: "दस शव्वाल अल-मुकर्रम",
+                admission_end: "अंतिम तिथि:",
+                admission_end_date: "27 शव्वाल अल-मुकर्रम",
+                additional_facilities: "अतिरिक्त सुविधाएं",
+                facility_1: "सुरक्षित और शांत शैक्षणिक वातावरण",
+                facility_2: "विशेषज्ञ और प्रशिक्षित शिक्षिकाएं",
+                facility_3: "पाठ्यक्रम के साथ सह-पाठयक्रम गतिविधियां",
+                registration_contact: "पंजीकरण के लिए संपर्क करें",
+                principal_name: "मौलाना अबुल लैस कासमी",
+                principal_position: "संस्थापक और प्रधान जामिया",
+                phone_number: "फोन नंबर: 8439786247",
+                admission_note: "अपनी बेटियों के उज्ज्वल भविष्य के लिए आज ही पंजीकरण कराएं!",
+                limited_seats: "सीमित सीटें उपलब्ध",
+                
+                // Help Page
+                help_title: "आप इन तरीकों से हमारी मदद कर सकते हैं",
+                help_option_1: "एक छात्रा की वार्षिक संरक्षण",
+                help_cost_1: "लागत: पच्चीस हज़ार रुपये",
+                help_option_2: "एक कक्षा का निर्माण कराकर",
+                help_cost_2: "लागत: तीन लाख रुपये<br>(अपने मृतकों के लिए)",
+                help_option_3: "अनाथ और गरीब छात्रों के लिए किताबें और वर्दी",
+                help_cost_3: "लागत: तीन हज़ार रुपये",
+                help_option_4: "एक पुस्तकालय का निर्माण कराकर",
+                help_cost_4: "लागत: बीस लाख रुपये",
+                help_option_5: "एक कंप्यूटर लैब का निर्माण कराकर",
+                help_cost_5: "लागत: दस लाख रुपये",
+                help_option_6: "एक जमीन का भूखंड दान करके",
+                help_cost_6: "लागत: पांच लाख रुपये",
+                help_option_7: "एक डाइनिंग हॉल का निर्माण कराकर",
+                help_cost_7: "लागत: पांच लाख रुपये",
+                help_option_8: "एक शिक्षिका के वार्षिक वेतन की संरक्षण",
+                help_cost_8: "लागत: एक लाख बीस हज़ार रुपये",
+                
+                // Gallery Page
+                gallery_title: "हमारी गैलरी",
+                
+                // Contact Page
+                contact_title: "हमसे संपर्क करें",
+                contact_details: "संपर्क विवरण",
+                address_title: "पता",
+                address_line1: "लालू नगर, थाना बेतिया के नजदीक",
+                address_line2: "पश्चिम चंपारण जिला, बिहार",
+                address_pincode: "पिन कोड: 855453",
+                bank_info: "बैंक विवरण",
+                bank_name: "एचडीएफसी बैंक, बेतिया",
+                account_holder: "अल-करीम एजुकेशनल एंड वेलफेयर ट्रस्ट",
+                account_no: "खाता संख्या: 50200049037730",
+                
+                // Footer
+                footer_institute: "जामिया उम्मुल कुरा लिलबनात",
+                footer_trust: "अल-करीम एजुकेशनल एंड वेलफेयर ट्रस्ट के प्रबंधन में",
+                footer_address: "लालू नगर, थाना बेतिया के नजदीक,<br>पश्चिम चंपारण जिला, बिहार – 855453",
+                footer_contact: "हमसे संपर्क करें",
+                footer_quick_links: "त्वरित लिंक",
+                footer_follow: "हमें फॉलो करें",
+                footer_copyright: "© 2025 जामिया उम्मुल कुरा लिलबनात | सर्वाधिकार सुरक्षित",
+                footer_design: "डिजाइन और रखरखाव",
+                social_facebook: "फेसबुक",
+                social_instagram: "इंस्टाग्राम",
+                social_youtube: "यूट्यूब",
+                social_twitter: "ट्विटर"
+            }
+        };
+
+        /* 🕒 لائیو تاریخ اور وقت (سیکنڈ + AM/PM) */
+        function updateDateTime() {
+            const now = new Date();
+
+            // تاریخ
+            document.getElementById("current-date").textContent = now.toLocaleDateString("en-GB", {
+                day: "2-digit", month: "long", year: "numeric"
+            });
+
+            // وقت سیکنڈ کے ساتھ + AM/PM
+            let hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const ampm = hours >= 12 ? "PM" : "AM";
+            hours = hours % 12 || 12;
+
+            const formattedTime =
+                `${hours.toString().padStart(2, '0')}:` +
+                `${minutes.toString().padStart(2, '0')}:` +
+                `${seconds.toString().padStart(2, '0')} ${ampm}`;
+
+            document.getElementById("current-time").textContent = formattedTime;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+        
+        /* زبان تبدیل کرنے کا فنکشن */
+        function changeLanguage(lang) {
+            // زبان کو محفوظ کریں
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // زبان کے مطابق سمت سیٹ کریں
+            if (lang === 'ur' || lang === 'ar') {
+                document.body.dir = 'rtl';
+            } else {
+                document.body.dir = 'ltr';
+            }
+            
+            // تمام متن کو اپڈیٹ کریں
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.value = translations[lang][key];
+                    } else {
+                        element.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+            
+            // زبان سلیکٹر کو اپڈیٹ کریں
+            document.getElementById('languageSelect').value = lang;
+        }
+        
+        /* صفحہ تبدیلی کا فنکشن */
+        function showPage(pageId) {
+            // تمام صفحات کو چھپائیں
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // مطلوبہ صفحہ دکھائیں
+            document.getElementById(pageId).classList.add('active');
+        }
+        
+        // نیویگیشن لنکس پر کلک کا ایونٹ
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+                
+                // URL کو اپڈیٹ کریں
+                window.history.pushState({}, '', `#${pageId}`);
+            });
+        });
+        
+        // زبان تبدیل کرنے کا ایونٹ
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            changeLanguage(this.value);
+        });
+        
+        // ہیش چینج کا ہینڈلنگ
+        window.addEventListener('hashchange', function() {
+            const pageId = window.location.hash.substring(1) || 'home';
+            showPage(pageId);
+        });
+        
+        // صفحہ لوڈ ہونے پر ہیش چیک کریں
+        window.addEventListener('load', function() {
+            const pageId = window.location.hash.substring(1) || 'home';
+            showPage(pageId);
+            
+            // محفوظ شدہ زبان لوڈ کریں
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            changeLanguage(savedLanguage);
+        });
+    </script>
+</body>
+</html>
